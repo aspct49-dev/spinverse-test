@@ -163,6 +163,7 @@
    Card top sits 28.26px below the badge top, i.e. 9px below the badge. */
 .podium__card {
   position: relative;
+  z-index: 1;                /* laps over the prize bar tucked beneath it */
   height: 238.047px;
   margin-top: 9px;
   padding-top: 13.76px;      /* avatar y offset inside the card */
@@ -247,6 +248,8 @@
    1st: y=638 − 367 = 271, and it clears the card by 4px.
    2nd: y=649.58 − 391.77 = 257.81, tucking ~8px behind the card.
    3rd: y=655.09 − 397.27 = 257.82. Both exactly as drawn. */
+/* Figma paints the bar before the card, so the card laps over its top edge.
+   The bar therefore sits BELOW the card, not above it. */
 .podium__prize {
   position: absolute;
   left: 50%;
@@ -255,7 +258,7 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-  z-index: 2;
+  z-index: 0;
 }
 .podium__col--first .podium__prize {
   top: 271px;

@@ -104,6 +104,12 @@ near-uniform navy (std ~2-7 per channel), so the patch is invisible, and the
 real text is drawn over it as HTML. If the band's artwork or the copy's
 position ever changes in Figma, this image has to be re-made the same way.
 
+**Podium z-order follows Figma's layer order.** The prize bar is drawn
+before the card in the source file, so the card laps over the bar's top edge
+rather than the other way round. The card carries `z-index: 1` and the bar
+`z-index: 0` to reproduce that; without it the bar covers the card's bottom
+border and rounded corners.
+
 **The podium glows are re-tinted from one source.** Each card carries a soft
 glow rising from its base. The asset URLs in Figma's code response served
 0.3KB blanks for all three, and the Starter-plan MCP call limit was reached
