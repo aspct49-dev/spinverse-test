@@ -1,0 +1,405 @@
+/* ==========================================================================
+   SpinVerse — leaderboard page (Figma frame 3:210 "Rainbet LB")
+   Offsets below are derived from the Figma canvas coordinates on the
+   1920×1435 frame; the arithmetic is noted where it is not obvious.
+   ========================================================================== */
+
+.lb {
+  position: relative;
+  margin-top: -66px;      /* top bar sits over the artwork */
+  padding-top: 66px;
+  overflow: hidden;
+}
+/* BGVega 2 (47:601) — 1921×791, 74% opacity over the base background */
+.lb__bg {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 1921px;
+  min-width: 100%;
+  height: 791px;
+  object-fit: cover;
+  opacity: .74;
+  z-index: 0;
+  pointer-events: none;
+}
+.lb__inner {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 96px;
+}
+
+/* ------------------------------- headings ------------------------------- */
+
+/* "$5 000" — Sakana 84.069px (Figma 3:250). The 302×80 box is the ink box
+   Figma reports, which keeps the headings below it at their drawn offsets. */
+.lb__title {
+  width: 302px;
+  height: 80px;
+  margin: 67.5px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lb__title span {
+  font-family: var(--font-sakana);
+  font-weight: 400;
+  font-size: 84.069px;
+  line-height: 1;
+  white-space: nowrap;
+  background: linear-gradient(0deg, #d150f7 0%, #edafff 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+.lb__subtitle {
+  margin: 2.5px 0 0;      /* box y=216.03, title ink ends at 213.5 */
+  text-align: center;
+  font-size: 31.854px;
+  font-weight: 700;
+  line-height: 38px;
+  background: linear-gradient(180deg, #eaeaea 0%, #c8c8c8 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+.lb__lede {
+  margin: 6px 0 0;        /* y=260 vs subtitle bottom 254.03 */
+  text-align: center;
+  font-size: 13.468px;
+  line-height: 16px;
+  color: var(--muted);
+}
+.lb__lede strong {
+  font-weight: 600;
+  color: var(--purple-accent);
+}
+
+/* VISIT / CODE row (3:418), y=282 */
+.lb__cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5.25px;
+  margin-top: 6px;
+}
+.lb__visit {
+  width: 112.747px;
+  height: 33.364px;
+  border-radius: 4.602px;
+  background: var(--purple);
+  color: #fff;
+  font-size: 11.888px;
+  box-shadow: inset 1.15px 1.15px 0 0 rgba(255, 255, 255, .3);
+}
+.lb__visit .vega-mark { color: #fff; }
+.lb__cta .code-chip {
+  width: 149px;
+  height: 33px;
+  border-width: .575px;
+  border-radius: 4.602px;
+  font-size: 11.888px;
+  padding: 0 9px;
+}
+
+.lb__noscript {
+  margin: 40px auto 0;
+  max-width: 480px;
+  padding: 14px 18px;
+  border: 1px solid var(--code-border);
+  border-radius: 8px;
+  background: var(--code-bg);
+  text-align: center;
+  font-size: 14px;
+  color: #e7c8f5;
+}
+
+/* -------------------------------- podium -------------------------------- */
+
+/* Cards are 227.039×238.047 with a 19.26px gutter, row centred on 958.5.
+   Row top = 367 (the 1st-place badge); the other two columns are staggered
+   down by their Figma badge offsets. CTA row ends at 315.364 → 51.636 gap. */
+.podium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 19.26px;
+  margin-top: 51.636px;
+}
+.podium__col { position: relative; width: 227.039px; }
+.podium__col--first  { margin-top: 0; }        /* badge y=367    */
+.podium__col--second { margin-top: 24.77px; }  /* badge y=391.77 */
+.podium__col--third  { margin-top: 30.27px; }  /* badge y=397.27 */
+
+/* rank pill above the card (4:504 / 4:529 / 4:554) */
+.podium__badge {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 99.071px;
+  height: 19.264px;
+  margin: 0 auto;
+  border-radius: 5.504px;
+  font-size: 10.379px;
+  font-weight: 600;
+  box-shadow: inset 1.694px 1.694px 0 0 rgba(255, 255, 255, .25);
+}
+.podium__trophy {
+  width: 12.384px;
+  height: 12.384px;
+  flex: none;
+  background: currentColor;
+  -webkit-mask: url("../assets/img/mask-trophy.png") no-repeat center / contain;
+          mask: url("../assets/img/mask-trophy.png") no-repeat center / contain;
+}
+.podium__col--first  .podium__badge { background: var(--purple-1st);   color: #4a1137; }
+.podium__col--second .podium__badge { background: var(--silver-badge); color: #2f2f2f; }
+.podium__col--third  .podium__badge { background: var(--orange);       color: #2d1111; }
+
+/* the card itself (4:487 / 4:512 / 4:537).
+   Card top sits 28.26px below the badge top, i.e. 9px below the badge. */
+.podium__card {
+  position: relative;
+  height: 238.047px;
+  margin-top: 9px;
+  padding-top: 13.76px;      /* avatar y offset inside the card */
+  background: var(--podium-bg);
+  border: 1.376px solid;
+  border-radius: 8.256px;
+  text-align: center;
+}
+.podium__col--first  .podium__card { border-color: var(--purple-1st); }
+.podium__col--second .podium__card { border-color: var(--silver); }
+.podium__col--third  .podium__card { border-color: var(--orange); }
+
+/* coloured haze drawn over the card fill but under its content (4:490 …).
+   225.838×272.003, offset −33.74px above the card top, so it bleeds out. */
+.podium__glow {
+  position: absolute;
+  left: 50%;
+  top: -33.74px;
+  width: 225.838px;
+  height: 272.003px;
+  transform: translateX(-50%);
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.podium__avatar {
+  position: relative;
+  z-index: 1;
+  width: 117.046px;
+  height: 117.046px;
+  margin: 0 auto;
+}
+.podium__avatar img {
+  width: 117.046px;
+  height: 117.046px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.podium__ring {
+  position: absolute;
+  inset: 0;
+  width: 117.046px;
+  height: 117.046px;
+}
+
+/* name box y=137.59 inside the card; avatar ends at 130.806 */
+.podium__name {
+  position: relative;
+  z-index: 1;
+  margin: 6.784px 0 0;
+  font-size: 27.709px;
+  font-weight: 500;
+  line-height: 28.896px;
+  color: #fff;
+}
+.podium__wagered-label {
+  position: relative;
+  z-index: 1;
+  margin: 15.144px 0 0;    /* label y=181.63, name ends at 166.486 */
+  font-size: 13.651px;
+  line-height: 13.76px;
+}
+.podium__wagered {
+  position: relative;
+  z-index: 1;
+  margin: -1.88px 0 0;     /* amount y=193.51, label ends at 195.39 */
+  font-size: 24.511px;
+  font-weight: 600;
+  line-height: 24.768px;
+  color: #fff;
+}
+.podium__col--first  .podium__wagered-label { color: var(--purple-1st); }
+.podium__col--second .podium__wagered-label { color: #c8c6c2; }
+.podium__col--third  .podium__wagered-label { color: #e3836b; }
+.podium__col--first  .podium__wagered .sym { color: var(--purple-1st); }
+.podium__col--second .podium__wagered .sym { color: #c0c0c0; }
+.podium__col--third  .podium__wagered .sym { color: var(--orange); }
+
+/* Prize bar, positioned from the column top (= badge top).
+   1st: y=638 − 367 = 271, and it clears the card by 4px.
+   2nd: y=649.58 − 391.77 = 257.81, tucking ~8px behind the card.
+   3rd: y=655.09 − 397.27 = 257.82. Both exactly as drawn. */
+.podium__prize {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  z-index: 2;
+}
+.podium__col--first .podium__prize {
+  top: 271px;
+  width: 193px;
+  height: 34px;
+  border-radius: 5.504px;
+  background: var(--purple-1st);
+  box-shadow: inset 1.694px 1.694px 0 0 rgba(255, 255, 255, .25);
+  font-family: var(--font-display);
+  font-size: 24.511px;
+  font-weight: 800;
+}
+.podium__col--second .podium__prize,
+.podium__col--third  .podium__prize {
+  top: 257.8px;
+  width: 192.639px;
+  height: 41.28px;
+  border-radius: 6.88px;
+  align-items: flex-start;
+  padding-top: 9.12px;       /* text y=664.21 inside a bar starting at 655.09 */
+  font-size: 24.511px;
+  font-weight: 700;
+  line-height: 24.768px;
+}
+.podium__col--second .podium__prize { background: var(--silver-bar); }
+.podium__col--third  .podium__prize { background: var(--orange); }
+
+/* -------------------------------- timer --------------------------------- */
+
+/* Podium row is 296.581px tall (30.27 + 19.264 + 9 + 238.047), so it ends at
+   663.581; the timer label sits at y=753. */
+.timer { margin-top: 89.419px; text-align: center; }
+.timer__label {
+  margin: 0;
+  font-size: 13.02px;
+  font-weight: 600;
+  line-height: 15px;
+  color: #a96eae;
+}
+.timer__units {
+  display: flex;
+  justify-content: center;
+  margin-top: 6.98px;      /* hexes at y=774.98, label ends at 768 */
+}
+.timer__unit {
+  position: relative;
+  width: 51.724px;
+  height: 51.724px;
+  margin-right: -4.224px;  /* 47.5px pitch on a 51.724px hex → slight overlap */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.timer__unit:last-child { margin-right: 0; }
+.timer__hex {
+  position: absolute;
+  inset: 0;
+  width: 51.724px;
+  height: 51.724px;
+  z-index: 0;
+}
+.timer__value {
+  position: relative;
+  z-index: 1;
+  font-size: 20.922px;
+  font-weight: 600;
+  line-height: 1;
+  color: #d7dbe4;
+  font-variant-numeric: tabular-nums;
+}
+.timer__name {
+  position: relative;
+  z-index: 1;
+  margin-top: 4px;
+  font-size: 9.014px;
+  font-weight: 600;
+  line-height: 1;
+  color: #a96eae;
+}
+
+/* -------------------------------- table --------------------------------- */
+
+/* Rows are 715.096 wide at x=603, centred on 960.5. Column offsets inside a
+   row: rank 22.06, user 182.99, wagered 428.28, reward flush right at 692.1.
+   Timer block ends at 826.7; the header row sits at y=864. */
+.lb-table {
+  width: 715.096px;
+  max-width: 100%;
+  margin: 37.3px auto 0;
+}
+.lb-table__row {
+  display: grid;
+  /* 670.04px of content between the 22.06/23 paddings. The first three tracks
+     put each column at its Figma x; the last takes the remainder so the
+     right-aligned reward lands flush at 692.1. */
+  grid-template-columns: 160.93px 245.29px 130px 1fr;
+  align-items: center;
+  padding: 0 23px 0 22.06px;
+  height: 38.934px;
+  border-radius: 6px;
+}
+.lb-table__head {
+  height: 17px;
+  margin-bottom: 10.25px;
+  font-size: 14.276px;
+  font-weight: 600;
+  color: var(--muted-2);
+}
+.lb-table__row + .lb-table__row { margin-top: 6.486px; }
+.lb-table__row--odd  { background: var(--row-odd); }
+.lb-table__row--even { background: var(--row-even); }
+
+.lb-table__rank {
+  font-size: 11.68px;
+  font-weight: 600;
+  color: #fff;
+}
+/* the top three ranks carry their podium gradient */
+.lb-table__rank--1,
+.lb-table__rank--2,
+.lb-table__rank--3 {
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+.lb-table__rank--1 { background-image: linear-gradient(180deg, #e794ff 0%, #db71fa 100%); }
+.lb-table__rank--2 { background-image: linear-gradient(180deg, #ffffff 0%, #c3c3c3 100%); }
+.lb-table__rank--3 { background-image: linear-gradient(180deg, #ff997b 0%, #ff7a52 100%); }
+
+.lb-table__user {
+  font-size: 14.276px;
+  font-weight: 600;
+  color: var(--muted-2);
+}
+.lb-table__wagered {
+  font-size: 14.276px;
+  font-weight: 600;
+  color: #fff;
+}
+.lb-table__reward {
+  text-align: right;
+  font-size: 14.276px;
+  font-weight: 600;
+  color: #fff;
+}
+.lb-table__reward .sym { color: var(--purple-1st); }
+.lb-table__head .lb-table__reward { color: var(--muted-2); }

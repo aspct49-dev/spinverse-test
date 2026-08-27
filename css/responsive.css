@@ -1,0 +1,209 @@
+/* ==========================================================================
+   SpinVerse — responsive behaviour.
+   The Figma file is a single 1920px desktop composition with no smaller
+   breakpoints, so everything below the desktop width is an interpretation:
+   sections reflow rather than scale, to keep type legible.
+   ========================================================================== */
+
+/* ------------------------- ≤1560px: VIP band reflows --------------------
+   The cowboy is baked into vip-art.png on its left third, so the copy stays
+   on the right and the plate is cropped from the centre outwards. */
+@media (max-width: 1560px) {
+  .vip__art {
+    left: 0;
+    transform: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 38% center;
+  }
+  .vip__inner { width: auto; max-width: 100%; }
+  .vip__copy {
+    left: auto;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 480px;
+  }
+}
+
+/* ------------------------- ≤1200px: nav + promo ------------------------- */
+@media (max-width: 1200px) {
+  .topbar__logo { left: 24px; }
+}
+
+@media (max-width: 1120px) {
+  .promo { padding-inline: 24px; }
+  .promo__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    height: auto;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  /* the artwork sits on the left of the banner, so darken it behind the copy */
+  .promo__card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(16, 6, 20, .72), rgba(16, 6, 20, .82));
+    z-index: 0;
+  }
+  .promo__headline,
+  .promo__sub,
+  .promo__actions { position: static; z-index: 1; }
+  .promo__headline { width: 265px; height: 68px; }
+  .promo__headline span { font-size: 78px; }
+  .promo__sub { font-size: 20px; }
+  .promo__actions { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 10px; }
+}
+
+/* --------------------- ≤1024px: nav collapses to a drawer --------------- */
+@media (max-width: 1024px) {
+  .nav-toggle { display: block; }
+  .topbar__nav {
+    position: absolute;
+    top: 66px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    height: auto;
+    padding: 8px 0;
+    background: #1b0a24;
+    border-bottom: 1px solid var(--nav);
+    display: none;
+  }
+  .topbar__nav.is-open { display: flex; }
+  .topbar__nav li { width: 100%; text-align: center; }
+  .topbar__nav a { display: block; padding: 14px 0; font-size: 15px; }
+}
+
+/* --------------------- ≤1000px: socials to two columns ------------------ */
+@media (max-width: 1000px) {
+  .socials { padding-top: 72px; }
+  .socials__grid { grid-template-columns: repeat(2, 219px); gap: 20px; }
+}
+
+/* ------------------- ≤900px: podium stacks, table tightens -------------- */
+@media (max-width: 900px) {
+  .podium {
+    flex-direction: column;
+    align-items: center;
+    gap: 66px;             /* room for the prize bar hanging below each card */
+    margin-top: 40px;
+  }
+  .podium__col--first,
+  .podium__col--second,
+  .podium__col--third { margin-top: 0; }
+  /* first place reads first on a stacked layout */
+  .podium__col--first  { order: 1; }
+  .podium__col--second { order: 2; }
+  .podium__col--third  { order: 3; }
+
+  .timer { margin-top: 72px; }
+
+  .lb-table__row {
+    grid-template-columns: 52px 1fr 96px;
+    padding-inline: 14px;
+  }
+  /* wagered and reward are the two numbers worth keeping side by side */
+  .lb-table__wagered { display: none; }
+  .lb-table__head .lb-table__wagered { display: none; }
+}
+
+/* --------------- ≤820px: hero reflows from canvas to flow --------------- */
+@media (max-width: 820px) {
+  .hero {
+    height: auto;
+    padding-bottom: 56px;
+  }
+  .hero__bg { height: 100%; }
+  .deco { display: none; }
+
+  .hero__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 56px;
+    padding-inline: 20px;
+  }
+  .hero__partner,
+  .hero__logo,
+  .hero__tagline,
+  .hero__actions { position: static; }
+  .hero__partner { order: 1; margin-bottom: 10px; }
+  .hero__logo    { order: 2; width: 100%; max-width: 420px; height: auto; }
+  .hero__tagline { order: 3; margin-top: 12px; font-size: 15px; }
+  .hero__actions { order: 4; margin-top: 24px; flex-wrap: wrap; }
+
+  .scroll-cue { position: static; margin-top: 36px; }
+
+  /* art becomes a dimmed backdrop; the copy centres over it */
+  .vip { height: auto; min-height: 340px; padding: 44px 20px; }
+  .vip::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(14, 14, 38, .62);
+    z-index: 0;
+  }
+  .vip__art { opacity: .38; object-position: 32% center; }
+  .vip__inner { height: auto; }
+  /* stays positioned so its z-index still counts against the ::after scrim */
+  .vip__copy {
+    position: relative;
+    z-index: 2;
+    left: auto;
+    right: auto;
+    top: auto;
+    transform: none;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .vip__title { font-size: 30px; line-height: 1.2; }
+  .vip__text { font-size: 18px; }
+  .vip__tg { margin-inline: auto; }
+}
+
+/* ------------------------- ≤620px: single column ------------------------ */
+@media (max-width: 620px) {
+  .topbar__logo { width: 110px; height: 28px; top: 19px; }
+
+  .socials { padding-top: 60px; }
+  .socials__title { width: 260px; height: 40px; }
+  .socials__title span { font-size: 57px; }
+  .socials__grid { grid-template-columns: 219px; }
+
+  .promo__headline { width: 220px; height: 57px; }
+  .promo__headline span { font-size: 65px; }
+  .promo__sub { font-size: 17px; }
+
+  .lb__title { width: 232px; height: 61px; margin-top: 48px; }
+  .lb__title span { font-size: 64px; }
+  .lb__subtitle { font-size: 23px; line-height: 30px; }
+  .lb__lede { font-size: 12.5px; padding-inline: 20px; }
+  .lb__cta { flex-wrap: wrap; gap: 8px; }
+
+  .lb-table { padding-inline: 14px; }
+  .lb-table__row { grid-template-columns: 44px 1fr 82px; padding-inline: 12px; }
+  .lb-table__user,
+  .lb-table__reward { font-size: 13px; }
+
+  .vip__title { font-size: 25px; }
+  .vip__text { font-size: 16px; }
+  .vip__tg { width: 100%; max-width: 262px; }
+}
+
+/* --------------------------- motion preferences ------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue img { animation: none; }
+  .btn, .social-card, .code-chip { transition: none; }
+  .btn:hover, .social-card:hover { transform: none; }
+}

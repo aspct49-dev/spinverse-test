@@ -1,0 +1,591 @@
+/* ==========================================================================
+   SpinVerse — implemented from Figma "SpinVerse (Copy)"
+   file GrZ4Aiq9pjTUiHEvaQZJc5 · frames 13:2 (Home) and 3:210 (Rainbet LB)
+   Design canvas: 1920px wide. Values below are the Figma values verbatim.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+/* The two display faces the design calls for. Both are subset to ASCII and
+   converted to WOFF from the originals in /neue-corp-font-family and /sakana.
+   NOTE: both were supplied under personal-use-only licences — commercial
+   deployment needs retail licences (PP Neue Corp from Pangram Pangram). */
+@font-face {
+  font-family: "PP Neue Corp";
+  src: url("../assets/fonts/PPNeueCorp-NormalUltrabold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sakana";
+  src: url("../assets/fonts/Sakana-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* surfaces */
+  --bg:              #100614;
+  --topbar-bg:       rgba(47, 16, 60, .7);
+  --card-bg:         #1c0e26;
+  --card-border:     #2e1440;
+  --row-odd:         #1c0e26;
+  --row-even:        #2d153f;
+  --podium-bg:       #1e2024;
+  --vip-bg:          #0e0e26;
+  --code-bg:         #4b1750;
+  --code-border:     rgba(210, 100, 221, .33);
+
+  /* brand purples */
+  --purple:          #dc75fa;
+  --purple-btn:      #e079fb;
+  --purple-accent:   #e085fb;
+  --purple-1st:      #db71fa;
+  --nav:             #9e6fb2;
+  --muted:           #795398;
+  --muted-2:         #88598c;
+  --on-purple:       #32173a;
+
+  /* podium / rank accents */
+  --silver:          #b5b5b5;
+  --silver-bar:      #a1a1a1;
+  --silver-badge:    #dedede;
+  --orange:          #fe543d;
+
+  /* misc */
+  --blue:            #60bdff;
+  --green:           #68ff60;
+
+  /* the two display faces from the Figma file */
+  --font-display:    "PP Neue Corp", "Arial Black", system-ui, sans-serif;
+  --font-sakana:     "Sakana", "Impact", system-ui, sans-serif;
+
+  /* shared treatment for the gradient display wordmarks */
+  --grad-wordmark:   linear-gradient(0deg, #cf48f4 0%, #ea9cff 100%);
+
+  /* the inset top-left highlight Figma puts on every filled button */
+  --btn-gloss:       inset 1.397px 1.397px 0 0 rgba(255, 255, 255, .3);
+}
+
+body {
+  background: var(--bg);
+  font-family: "Rubik", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+/* ============================ top bar (13:6 / 47:602) ==================== */
+
+.topbar {
+  position: relative;
+  z-index: 20;
+  height: 66px;
+  background: var(--topbar-bg);
+  border-bottom: 1px solid var(--nav);
+  backdrop-filter: blur(6px);
+}
+.topbar__inner {
+  position: relative;
+  height: 100%;
+  max-width: 1920px;
+  margin-inline: auto;
+}
+.topbar__logo {
+  position: absolute;
+  left: 414px;
+  top: 16px;
+  width: 131.49px;
+  height: 34px;
+  object-fit: contain;
+}
+.topbar__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 21px;              /* uniform 21px between the four Figma labels */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.topbar__nav a {
+  font-size: 14.3px;
+  font-weight: 700;
+  color: var(--nav);
+  letter-spacing: .01em;
+  transition: color .18s ease;
+}
+.topbar__nav a:hover,
+.topbar__nav a[aria-current="page"] { color: #e7c8f5; }
+
+.nav-toggle {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 32px;
+  padding: 6px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  margin: 4px 0;
+  background: var(--nav);
+  border-radius: 2px;
+}
+
+/* ============================== buttons ================================= */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 5.589px;
+  font-family: inherit;
+  font-size: 14.3px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform .15s ease, filter .15s ease;
+}
+.btn:hover { transform: translateY(-1px); filter: brightness(1.07); }
+.btn:active { transform: translateY(0); }
+
+/* filled purple + Figma's inset gloss */
+.btn--fill {
+  background: var(--purple);
+  color: var(--on-purple);
+  box-shadow: var(--btn-gloss);
+}
+/* dark chip with the translucent orchid hairline */
+.btn--ghost {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  color: #ce80d7;
+}
+.btn__icon { width: 14px; height: 14px; flex: none; }
+
+/* copy-code chip (22:429 / 3:422) */
+.code-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  height: 40px;
+  padding: 0 11px;
+  background: var(--code-bg);
+  border: .697px solid var(--code-border);
+  border-radius: 5.578px;
+  font-family: inherit;
+  font-size: 14.41px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color .18s ease;
+}
+.code-chip:hover { border-color: rgba(210, 100, 221, .7); }
+.code-chip__label { color: var(--muted-2); }
+.code-chip__value { color: #fff; }
+.code-chip__copy {
+  width: 14px;
+  height: 15px;
+  flex: none;
+  margin-left: auto;      /* copy glyph sits flush right, as in Figma */
+  opacity: .85;
+}
+.code-chip.is-copied .code-chip__value::after {
+  content: " \2713";
+  color: var(--green);
+}
+
+/* the Vega wordmark is a PNG used as an alpha mask so it can be recoloured */
+.vega-mark {
+  width: 34px;
+  height: 16px;
+  background: currentColor;
+  -webkit-mask: url("../assets/img/vega-wordmark-mask.png") no-repeat center / contain;
+          mask: url("../assets/img/vega-wordmark-mask.png") no-repeat center / contain;
+}
+
+/* the source polygon points up; Figma rotates it 90° so it reads as a chevron */
+.caret {
+  flex: none;
+  transform: rotate(90deg);
+  background: currentColor;
+  -webkit-mask: url("../assets/svg/icon-caret.svg") no-repeat center / contain;
+          mask: url("../assets/svg/icon-caret.svg") no-repeat center / contain;
+}
+
+/* ======================= HOME · hero (13:2) ============================== */
+
+.hero {
+  position: relative;
+  height: 791px;
+  margin-top: -66px;        /* top bar overlays the hero art, as in Figma */
+  padding-top: 66px;
+  overflow: hidden;
+}
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 791px;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* floating game-art decorations (13:384-387) — each keeps its Figma box,
+   rotation and opacity; the inner leaf keeps its own explicit size. */
+.deco { position: absolute; z-index: 1; pointer-events: none; }
+.deco img { width: 100%; height: 100%; object-fit: cover; }
+.deco--bg3    { left: -72px;  top: 116px; width: 170px;     height: 170px;     transform: rotate(-9.63deg);  opacity: .16; }
+.deco--razor  { left: 545px;  top: 340px; width: 60.683px;  height: 64.614px;  transform: rotate(-9.54deg); }
+.deco--gaybo  { left: 1292px; top: 200px; width: 74.491px;  height: 74.491px;  transform: rotate(5.08deg); }
+.deco--sweets { left: 1635px; top: 397px; width: 122.849px; height: 96.158px;  transform: rotate(-18.61deg); opacity: .23; }
+
+/* brand block (47:597) — 658×327 frame, children at Figma coordinates */
+.hero__brand {
+  position: relative;
+  z-index: 2;
+  width: 658px;
+  max-width: 100%;
+  height: 327px;
+  margin: 141px auto 0;     /* frame top 207 − top bar 66 */
+}
+.hero__partner {
+  position: absolute;
+  top: 7px;
+  left: 0; right: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 13.468px;
+  color: var(--muted);
+}
+.hero__logo {
+  position: absolute;
+  top: 0; left: 0;
+  width: 658px;
+  height: 226px;
+  object-fit: contain;
+}
+.hero__tagline {
+  position: absolute;
+  top: 217px;
+  left: 0; right: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 16.414px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+.hero__tagline strong {
+  font-weight: 600;
+  color: var(--purple-accent);
+}
+.hero__actions {
+  position: absolute;
+  top: 286px;
+  left: 0; right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+}
+/* icon and label offsets inside each hero button are taken from Figma */
+.hero__actions .btn--claim {
+  width: 183.026px; height: 40.517px;
+  justify-content: flex-start; padding-left: 22px; gap: 10px;
+}
+.hero__actions .btn--lb {
+  width: 210px; height: 41px;
+  justify-content: flex-start; padding-left: 17px; gap: 11px;
+}
+.hero__actions .btn--vega {
+  width: 79px; height: 41px; color: var(--on-purple);
+  justify-content: flex-start; padding-left: 17px; gap: 8px;
+}
+.btn--vega .caret { width: 9.78px; height: 17.115px; }
+.btn--lb .btn__icon { width: 19px; height: 19px; }
+
+/* scroll cue (24:465 / 24:467) */
+.scroll-cue {
+  position: absolute;
+  z-index: 2;
+  top: 661px;
+  left: 0; right: 0;
+  text-align: center;
+  color: #78598c;
+  font-size: 14.89px;
+}
+.scroll-cue img {
+  width: 34.149px;
+  height: 19.514px;
+  margin: 2px auto 0;
+  animation: bob 1.8s ease-in-out infinite;
+}
+/* the source polygon points up; Figma rotates it 180° to point down */
+@keyframes bob {
+  0%, 100% { transform: translateY(0)   rotate(180deg); }
+  50%      { transform: translateY(5px) rotate(180deg); }
+}
+
+/* ===================== HOME · 100 FS banner (47:594) ==================== */
+
+.promo { padding: 8px 20px 0; }
+.promo__card {
+  position: relative;
+  width: 1057px;
+  max-width: 100%;
+  height: 211px;
+  margin-inline: auto;
+  border: 1px solid #e07dfb;
+  border-radius: 17px;
+  overflow: hidden;
+}
+.promo__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* "100 FS" — PP Neue Corp Normal Ultrabold 104.779px (Figma 22:424).
+   The fixed box keeps the layout stable; the inner span carries the gradient
+   so background-clip maps to the glyphs rather than the whole box. */
+.promo__headline {
+  position: absolute;
+  left: 417px;
+  top: 26px;
+  width: 353.33px;
+  height: 91px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 8px 5.8px rgba(0, 0, 0, .12));
+}
+.promo__headline span {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 104.779px;
+  line-height: 1;
+  white-space: nowrap;
+  background: var(--grad-wordmark);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+.promo__sub {
+  position: absolute;
+  left: 443px;
+  top: 135px;
+  margin: 0;
+  font-size: 23.165px;
+  font-weight: 800;
+  background: linear-gradient(0deg, #c3c3c3 0%, #f9f9f9 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+.promo__actions {
+  position: absolute;
+  left: 845px;
+  top: 61px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.promo__actions .code-chip { width: 180.606px; }
+.promo__claim {
+  width: 183px;
+  height: 44px;
+  background: var(--purple-btn);
+  color: #fff;
+  font-size: 21.795px;
+  font-weight: 600;
+  box-shadow: var(--btn-gloss);
+}
+
+/* ======================== HOME · socials (47:595) ======================= */
+
+.socials { padding: 92px 20px 0; }
+/* "SOCIALS" — Sakana 78.085px (Figma 40:557) */
+.socials__title {
+  width: 356.67px;
+  height: 54.67px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.socials__title span {
+  font-family: var(--font-sakana);
+  font-weight: 400;
+  font-size: 78.085px;
+  line-height: 1;
+  white-space: nowrap;
+  background: var(--grad-wordmark);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+.socials__sub {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 17.703px;
+  font-weight: 700;
+  background: linear-gradient(180deg, #f4f4f4 0%, #c0c0c0 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+.socials__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 219px);
+  gap: 22px;
+  justify-content: center;
+  margin-top: 58px;
+}
+.social-card {
+  position: relative;
+  height: 184px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 13px;
+  transition: border-color .2s ease, transform .2s ease;
+}
+.social-card:hover { border-color: #58306e; transform: translateY(-3px); }
+
+/* Each glyph is the Figma PNG used as an alpha mask, filled with the design's
+   purple gradient. Sizes are per-icon — no shared descendant sizing rule. */
+.social-card__glyph {
+  position: absolute;
+  background-image: linear-gradient(0deg, #cf48f4 0%, #ea9cff 100%);
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-size: contain;     mask-size: contain;
+  -webkit-mask-position: center;  mask-position: center;
+}
+.glyph--kick {
+  left: 54.12px; top: 15.76px; width: 108.433px; height: 76.261px;
+  -webkit-mask-image: url("../assets/img/mask-kick.png");
+          mask-image: url("../assets/img/mask-kick.png");
+}
+.glyph--x {
+  left: 56.07px; top: 18px; width: 105.244px; height: 74.018px;
+  -webkit-mask-image: url("../assets/img/mask-x.png");
+          mask-image: url("../assets/img/mask-x.png");
+}
+.glyph--discord {
+  left: 57.78px; top: 15.88px; width: 102.055px; height: 71.775px;
+  -webkit-mask-image: url("../assets/img/mask-discord.png");
+          mask-image: url("../assets/img/mask-discord.png");
+}
+/* telegram ships as a real SVG, so it is rendered, not masked */
+.social-card__svg {
+  position: absolute;
+  left: 50px; top: 0;
+  width: 110px;
+  height: 110px;
+}
+.social-card__handle {
+  position: absolute;
+  top: 99px;
+  left: 0; right: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 18.957px;
+  color: var(--muted);
+}
+.social-card__cta {
+  position: absolute;
+  left: 8.81px;
+  top: 132px;
+  width: 200.745px;
+  height: 37.009px;
+  border-radius: 6px;
+  background: var(--purple);
+  color: var(--on-purple);
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: inset 1.472px 1.472px 0 0 rgba(255, 255, 255, .3);
+}
+
+/* ========================= HOME · VIP band (47:598) ===================== */
+
+.vip {
+  position: relative;
+  height: 434px;
+  margin-top: 154px;
+  background: var(--vip-bg);
+  overflow: hidden;          /* stands in for Figma's rectangular mask */
+}
+/* Figma composites this band from five layers with a colour-dodge blend at 65%
+   over #0e0e26. CSS mix-blend-mode does not reproduce that stack faithfully
+   (it blew the sky out), so the whole artwork group — saloon plate, cowboy,
+   bonus coin and both sweets — is exported from Figma pre-flattened. */
+.vip__art {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 1920px;
+  max-width: none;
+  height: 434px;
+  z-index: 0;
+  pointer-events: none;
+}
+/* The band is authored 1983px wide on a 1920px page, so it deliberately
+   overhangs both edges; keeping the true width makes the x-coordinates land. */
+.vip__inner {
+  position: relative;
+  height: 100%;
+  width: 1983px;
+  margin-inline: auto;
+}
+/* Copy column at x=991: title y=102, body y=156.8, button y=279.
+   Kept in normal flow inside .vip__copy so it can reflow on narrow screens. */
+.vip__copy { position: absolute; z-index: 1; left: 991px; top: 102px; }
+.vip__title {
+  margin: 0;
+  font-size: 36.34px;
+  font-weight: 600;
+  line-height: 43px;
+  color: #e5e5e5;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+}
+.vip__title span { color: var(--blue); }
+.vip__text {
+  margin: 11.8px 0 0;
+  font-size: 21.435px;
+  line-height: 25px;
+  color: #9892bc;
+}
+.vip__text .hi-green { color: var(--green); }
+.vip__text .hi-blue  { color: var(--blue); }
+.vip__tg {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 47.2px;
+  padding: 0 23px 0 24px;
+  width: 262px;
+  height: 53px;
+  border-radius: 7.357px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 20px;
+  box-shadow: inset 1.839px 1.839px 0 0 rgba(255, 255, 255, .3);
+}
+.vip__tg img { width: 34px; height: 34px; }
+.vip__tg .caret { width: 12.875px; height: 22.531px; }

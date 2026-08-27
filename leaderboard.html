@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SpinVerse — $5 000 Monthly Leaderboard</title>
+<meta name="description" content="Compete against other players under code SPINVERSE and win a share of the $5,000 monthly leaderboard.">
+<link rel="icon" href="assets/img/logo-nav.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Blinker:wght@400;600&family=Onest:wght@400..800&family=Rubik:wght@300..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/leaderboard.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="index.html" aria-label="SpinVerse home">
+      <img class="topbar__logo" src="assets/img/logo-nav-lb.png" alt="SpinVerse">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="topbar__nav" id="primary-nav">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="leaderboard.html" aria-current="page">LEADERBOARD</a></li>
+      <li><a href="index.html#bonuses">BONUSES</a></li>
+      <li><a href="index.html#socials">SOCIALS</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="lb">
+  <img class="lb__bg" src="assets/img/bg-vega.png" alt="">
+
+  <div class="lb__inner">
+
+    <p class="lb__title"><span data-prize-pool>$5 000</span></p>
+    <h1 class="lb__subtitle">MONTHLY LEADERBOARD</h1>
+    <p class="lb__lede">
+      Compete against other players under code <strong>SPINVERSE</strong> and win big rewards!
+    </p>
+
+    <div class="lb__cta">
+      <a class="btn lb__visit" href="#">
+        VISIT <span class="vega-mark" aria-hidden="true"></span>
+      </a>
+      <button class="code-chip" type="button" data-code="SPINVERSE">
+        <span class="code-chip__label">CODE:</span>
+        <span class="code-chip__value">SPINVERSE</span>
+        <img class="code-chip__copy" src="assets/svg/icon-copy-lb.svg" alt="">
+      </button>
+    </div>
+
+    <noscript>
+      <p class="lb__noscript">The leaderboard standings need JavaScript enabled to load.</p>
+    </noscript>
+
+    <!-- The podium (Figma 4:485 / 4:510 / 4:535) and the ranks table
+         (Figma 54:610) are both rendered from LEADERBOARD.players in
+         js/leaderboard.js, so the top three always match rows 1-3.
+         Left-to-right the podium runs 2nd, 1st, 3rd, with 1st elevated.
+
+         Note on the source file: its podium group names are out of step with
+         the badges they contain (the group named "2nd" holds the 3rd-place
+         badge). Badge text, colours and canvas position agree with each
+         other, so those are what the layout follows. -->
+    <section class="podium" aria-label="Top three players" data-podium></section>
+
+    <!-- countdown (Figma 66:2) — Figma's frozen values are the no-JS fallback -->
+    <section class="timer" aria-label="Time remaining">
+      <p class="timer__label">LEADERBOARD ENDS IN</p>
+      <div class="timer__units" data-countdown>
+        <div class="timer__unit">
+          <img class="timer__hex" src="assets/svg/timer-hex.svg" alt="">
+          <span class="timer__value" data-unit="days">18</span>
+          <span class="timer__name">DAYS</span>
+        </div>
+        <div class="timer__unit">
+          <img class="timer__hex" src="assets/svg/timer-hex.svg" alt="">
+          <span class="timer__value" data-unit="hours">12</span>
+          <span class="timer__name">HRS</span>
+        </div>
+        <div class="timer__unit">
+          <img class="timer__hex" src="assets/svg/timer-hex.svg" alt="">
+          <span class="timer__value" data-unit="minutes">53</span>
+          <span class="timer__name">MIN</span>
+        </div>
+        <div class="timer__unit">
+          <img class="timer__hex" src="assets/svg/timer-hex.svg" alt="">
+          <span class="timer__value" data-unit="seconds">31</span>
+          <span class="timer__name">SEC</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="lb-table" role="table" aria-label="Leaderboard ranks 1 to 10" data-ranks>
+      <div class="lb-table__row lb-table__head" role="row">
+        <span role="columnheader">Rank</span>
+        <span role="columnheader">User</span>
+        <span class="lb-table__wagered" role="columnheader">$ Wagered</span>
+        <span class="lb-table__reward" role="columnheader">Reward</span>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+<script src="js/leaderboard.js"></script>
+</body>
+</html>

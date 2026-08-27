@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SpinVerse — Official Partner of Vega</title>
+<meta name="description" content="Enjoy VIP rewards, climb to the top of the SpinVerse leaderboards and win big rewards.">
+<link rel="icon" href="assets/img/logo-nav.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Blinker:wght@400;600&family=Onest:wght@400..800&family=Rubik:wght@300..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="index.html" aria-label="SpinVerse home">
+      <img class="topbar__logo" src="assets/img/logo-nav.png" alt="SpinVerse">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="topbar__nav" id="primary-nav">
+      <li><a href="index.html" aria-current="page">HOME</a></li>
+      <li><a href="leaderboard.html">LEADERBOARD</a></li>
+      <li><a href="#bonuses">BONUSES</a></li>
+      <li><a href="#socials">SOCIALS</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===================== hero (Figma 13:2) ===================== -->
+  <section class="hero">
+    <img class="hero__bg" src="assets/img/bg-homepage.png" alt="">
+
+    <div class="deco deco--bg3"><img src="assets/img/deco-bg3.png" alt=""></div>
+    <div class="deco deco--razor"><img src="assets/img/deco-razor.png" alt=""></div>
+    <div class="deco deco--gaybo"><img src="assets/img/deco-gaybo.png" alt=""></div>
+    <div class="deco deco--sweets"><img src="assets/img/deco-sweets-mid.png" alt=""></div>
+
+    <div class="hero__brand">
+      <p class="hero__partner">OFFICIAL PARTNER OF VEGA</p>
+      <img class="hero__logo" src="assets/img/logo-spinverse-hero.png" alt="SpinVerse">
+      <p class="hero__tagline">
+        Enjoy <strong>Vip Rewards</strong>, Climb to the top of the <strong>Leaderboards</strong><br>
+        and win big rewards!
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--fill btn--claim" href="#bonuses">
+          <img class="btn__icon" src="assets/svg/icon-gift.svg" alt="">CLAIM BONUSES
+        </a>
+        <a class="btn btn--ghost btn--lb" href="leaderboard.html">
+          <img class="btn__icon" src="assets/svg/icon-premium-badge.svg" alt="">VISIT LEADERBOARD
+        </a>
+        <a class="btn btn--fill btn--vega" href="#" aria-label="Visit Vega">
+          <span class="vega-mark" aria-hidden="true"></span>
+          <span class="caret" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-cue">
+      <span>Scroll down to view more</span>
+      <img src="assets/svg/icon-scroll-arrow.svg" alt="">
+    </div>
+  </section>
+
+  <!-- ================ 100 FS banner (Figma 47:594) ================ -->
+  <section class="promo" id="bonuses">
+    <div class="promo__card">
+      <img class="promo__bg" src="assets/img/banner-100fs-bg.png" alt="">
+      <p class="promo__headline"><span>100 FS</span></p>
+      <p class="promo__sub">ON SWEET BONANZA 1000</p>
+      <div class="promo__actions">
+        <button class="code-chip" type="button" data-code="MAXWIN">
+          <span class="code-chip__label">CODE:</span>
+          <span class="code-chip__value">MAXWIN</span>
+          <img class="code-chip__copy" src="assets/svg/icon-copy.svg" alt="">
+        </button>
+        <a class="btn promo__claim" href="#">Claim now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== socials (Figma 47:595) ==================== -->
+  <section class="socials" id="socials">
+    <h2 class="socials__title"><span>SOCIALS</span></h2>
+    <p class="socials__sub">Stay in touch!</p>
+
+    <div class="socials__grid">
+      <div class="social-card">
+        <span class="social-card__glyph glyph--kick" aria-hidden="true"></span>
+        <p class="social-card__handle">SPINVERSE</p>
+        <a class="btn social-card__cta" href="#">FOLLOW</a>
+      </div>
+
+      <div class="social-card">
+        <img class="social-card__svg" src="assets/svg/icon-telegram-big.svg" alt="">
+        <p class="social-card__handle">VIP SUPPORT</p>
+        <a class="btn social-card__cta" href="#">CLICK HERE</a>
+      </div>
+
+      <div class="social-card">
+        <span class="social-card__glyph glyph--x" aria-hidden="true"></span>
+        <p class="social-card__handle">SPINVERSEE</p>
+        <a class="btn social-card__cta" href="#">FOLLOW</a>
+      </div>
+
+      <div class="social-card">
+        <span class="social-card__glyph glyph--discord" aria-hidden="true"></span>
+        <p class="social-card__handle">/SPINVERSE</p>
+        <a class="btn social-card__cta" href="#">JOIN NOW</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ VIP rewards band (Figma 47:598) ============= -->
+  <section class="vip">
+    <img class="vip__art" src="assets/img/vip-art.png" alt="">
+    <div class="vip__inner">
+
+      <div class="vip__copy">
+        <h2 class="vip__title">Personalized <span>VIP Rewards</span> ?</h2>
+        <p class="vip__text">
+          Are you a <span class="hi-green">High-Roller</span> &amp; need <span class="hi-blue">VIP Rewards</span> ?<br><br>
+          Contact us on <span class="hi-blue">Telegram</span> &amp; learn more.
+        </p>
+        <a class="btn vip__tg" href="#">
+          <img src="assets/svg/icon-telegram-btn.svg" alt="">
+          Join Telegram
+          <span class="caret" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>
