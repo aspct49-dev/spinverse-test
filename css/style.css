@@ -375,12 +375,14 @@ a { text-decoration: none; color: inherit; }
 /* "100 FS" — PP Neue Corp Normal Ultrabold 104.779px (Figma 22:424).
    The fixed box keeps the layout stable; the inner span carries the gradient
    so background-clip maps to the glyphs rather than the whole box. */
+/* Figma text box is 346×159 at (417.05, 19); centring the glyphs in it puts
+   the ink where the design has it, just above the subtitle at y=135. */
 .promo__headline {
   position: absolute;
   left: 417px;
-  top: 26px;
-  width: 353.33px;
-  height: 91px;
+  top: 19px;
+  width: 346px;
+  height: 159px;
   margin: 0;
   display: flex;
   align-items: center;
@@ -391,18 +393,22 @@ a { text-decoration: none; color: inherit; }
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 104.779px;
-  line-height: 1;
+  line-height: 1.2;        /* keeps background-clip from shearing the glyphs */
   white-space: nowrap;
   background: var(--grad-wordmark);
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;
 }
+/* 22:425 — box x=443 w=305, so it is centred under the headline, not
+   left-anchored at 443 (which is what pushed it out of alignment). */
 .promo__sub {
   position: absolute;
   left: 443px;
   top: 135px;
+  width: 305px;
   margin: 0;
+  text-align: center;
   font-size: 23.165px;
   font-weight: 800;
   background: linear-gradient(0deg, #c3c3c3 0%, #f9f9f9 100%);
@@ -445,7 +451,7 @@ a { text-decoration: none; color: inherit; }
   font-family: var(--font-sakana);
   font-weight: 400;
   font-size: 78.085px;
-  line-height: 1;
+  line-height: 1.35;       /* keeps background-clip from shearing the glyphs */
   white-space: nowrap;
   background: var(--grad-wordmark);
   -webkit-background-clip: text;

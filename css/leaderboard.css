@@ -45,7 +45,9 @@
   font-family: var(--font-sakana);
   font-weight: 400;
   font-size: 84.069px;
-  line-height: 1;
+  /* background-clip paints only inside the line box, so a 1.0 line-height
+     shears the tops off Sakana's taller glyphs. 1.35 clears the ascenders. */
+  line-height: 1.35;
   white-space: nowrap;
   background: linear-gradient(0deg, #d150f7 0%, #edafff 100%);
   -webkit-background-clip: text;
@@ -53,7 +55,7 @@
   color: transparent;
 }
 .lb__subtitle {
-  margin: 2.5px 0 0;      /* box y=216.03, title ink ends at 213.5 */
+  margin: -12px 0 0;      /* pulled up under the wordmark */
   text-align: center;
   font-size: 31.854px;
   font-weight: 700;
@@ -301,19 +303,18 @@
 .timer__units {
   display: flex;
   justify-content: center;
-  margin-top: 6.98px;      /* hexes at y=774.98, label ends at 768 */
+  gap: 9px;                /* Figma overlaps these; separated so the hex edges read */
+  margin-top: 6.98px;
 }
 .timer__unit {
   position: relative;
   width: 51.724px;
   height: 51.724px;
-  margin-right: -4.224px;  /* 47.5px pitch on a 51.724px hex → slight overlap */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.timer__unit:last-child { margin-right: 0; }
 .timer__hex {
   position: absolute;
   inset: 0;
@@ -364,10 +365,12 @@
 .lb-table__head {
   height: 17px;
   margin-bottom: 10.25px;
+  font-family: "Blinker", system-ui, sans-serif;
   font-size: 14.276px;
   font-weight: 600;
   color: var(--muted-2);
 }
+.lb-table__head span { font-family: inherit; }
 .lb-table__row + .lb-table__row { margin-top: 6.486px; }
 .lb-table__row--odd  { background: var(--row-odd); }
 .lb-table__row--even { background: var(--row-even); }
