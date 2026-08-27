@@ -523,6 +523,10 @@ a { text-decoration: none; color: inherit; }
 
 /* ========================= HOME · VIP band (47:598) ===================== */
 
+/* The Figma Home Page frame is 2424 tall and the band ends at 2057, leaving
+   367px of page background below it. */
+.home { padding-bottom: 367px; }
+
 .vip {
   position: relative;
   height: 434px;

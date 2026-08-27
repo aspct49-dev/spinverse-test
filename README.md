@@ -90,9 +90,19 @@ interpretation, not a spec: the VIP band crops to a backdrop, the podium
 stacks 1st→3rd, and the ranks table drops the Wagered column under 900px.
 
 **The VIP band artwork is pre-flattened.** Figma composites it from five
-layers with a colour-dodge blend at 65%. CSS `mix-blend-mode` did not
-reproduce that stack (it blew out the sky), so the whole group is exported
-from Figma as one image, `vip-art.png`.
+layers, one of which colour-dodges at 65% against the `#0e0e26` base through
+a pass-through group. Neither CSS `mix-blend-mode` nor an export of the
+artwork group reproduces that: the group exports fully opaque with the dodge
+already resolved against its own backdrop, which comes out dark purple
+instead of navy blue (measured (35,20,40) against a target of (43,46,80), and
+no blend mode closed the gap).
+
+So `vip-art.png` is Figma's render of the whole band — the only node that
+composites correctly — with the baked heading, body copy and button painted
+out by interpolating vertically across that region. The background there is
+near-uniform navy (std ~2-7 per channel), so the patch is invisible, and the
+real text is drawn over it as HTML. If the band's artwork or the copy's
+position ever changes in Figma, this image has to be re-made the same way.
 
 ## Still open in the design
 
