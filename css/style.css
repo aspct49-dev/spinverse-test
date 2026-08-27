@@ -246,9 +246,21 @@ a { text-decoration: none; color: inherit; }
   z-index: 0;
 }
 
-/* floating game-art decorations (13:384-387) — each keeps its Figma box,
-   rotation and opacity; the inner leaf keeps its own explicit size. */
-.deco { position: absolute; z-index: 1; pointer-events: none; }
+/* Floating game-art decorations (13:384-387). Their x/y are measured from the
+   left edge of the 1920px Figma page, so they hang off a centred 1920 box —
+   pinning them to the viewport edge instead would slide them across the logo
+   as the window narrows, and push the rightmost one out of view. */
+.hero__deco {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 1920px;
+  height: 791px;
+  z-index: 1;
+  pointer-events: none;
+}
+.deco { position: absolute; pointer-events: none; }
 .deco img { width: 100%; height: 100%; object-fit: cover; }
 .deco--bg3    { left: -72px;  top: 116px; width: 170px;     height: 170px;     transform: rotate(-9.63deg);  opacity: .16; }
 .deco--razor  { left: 545px;  top: 340px; width: 60.683px;  height: 64.614px;  transform: rotate(-9.54deg); }

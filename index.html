@@ -37,10 +37,15 @@
   <section class="hero">
     <img class="hero__bg" src="assets/img/bg-homepage.png" alt="">
 
-    <div class="deco deco--bg3"><img src="assets/img/deco-bg3.png" alt=""></div>
-    <div class="deco deco--razor"><img src="assets/img/deco-razor.png" alt=""></div>
-    <div class="deco deco--gaybo"><img src="assets/img/deco-gaybo.png" alt=""></div>
-    <div class="deco deco--sweets"><img src="assets/img/deco-sweets-mid.png" alt=""></div>
+    <!-- Figma places this art by absolute x/y on a 1920px page, so it lives in
+         a centred 1920 box; otherwise it drifts against the centred logo and
+         the rightmost piece falls off narrower viewports. -->
+    <div class="hero__deco" aria-hidden="true">
+      <div class="deco deco--bg3"><img src="assets/img/deco-bg3.png" alt=""></div>
+      <div class="deco deco--razor"><img src="assets/img/deco-razor.png" alt=""></div>
+      <div class="deco deco--gaybo"><img src="assets/img/deco-gaybo.png" alt=""></div>
+      <div class="deco deco--sweets"><img src="assets/img/deco-sweets-mid.png" alt=""></div>
+    </div>
 
     <div class="hero__brand">
       <p class="hero__partner">OFFICIAL PARTNER OF VEGA</p>
