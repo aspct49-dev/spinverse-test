@@ -104,6 +104,14 @@ near-uniform navy (std ~2-7 per channel), so the patch is invisible, and the
 real text is drawn over it as HTML. If the band's artwork or the copy's
 position ever changes in Figma, this image has to be re-made the same way.
 
+**The podium glows are re-tinted from one source.** Each card carries a soft
+glow rising from its base. The asset URLs in Figma's code response served
+0.3KB blanks for all three, and the Starter-plan MCP call limit was reached
+after fetching only the 1st-place texture, so `glow-2nd.png` and
+`glow-3rd.png` are that texture's alpha channel tinted with the silver and
+orange rank accents. The shape is Figma's; the two colours are derived. Worth
+re-exporting from the real nodes (`4:540` and `4:515`) if the limit lifts.
+
 ## Still open in the design
 
 - **The Figma podium groups are mislabelled.** The group named `2nd` holds

@@ -169,6 +169,7 @@
   background: var(--podium-bg);
   border: 1.376px solid;
   border-radius: 8.256px;
+  overflow: hidden;          /* clips the glow to the card, as Figma's mask does */
   text-align: center;
 }
 .podium__col--first  .podium__card { border-color: var(--purple-1st); }
