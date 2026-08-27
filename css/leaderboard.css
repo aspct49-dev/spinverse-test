@@ -406,4 +406,8 @@
   color: #fff;
 }
 .lb-table__reward .sym { color: var(--purple-1st); }
+
+/* the cell colours must not leak into the header row — Figma sets all four
+   column headings to the same muted #88598c */
+.lb-table__head .lb-table__wagered,
 .lb-table__head .lb-table__reward { color: var(--muted-2); }
